@@ -3,10 +3,11 @@ package com.rastroinfosistemas.algafood.di.nodificador;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.rastroinfosistemas.algafood.di.modelo.Cliente;
+import com.rastroinfosistemas.algafood.di.nodificador.NivelDeUrgencia.NivelUrgencia;
 
 /*TODO @Component informa que é uma classe Bean e que deve ser gerenciada pelo Spring*/
 
-@Qualifier("urgente")
+@TipoDoNotificador(NivelUrgencia.NORMAL)
 public class NotificadorEmail implements Notificador {
 
 	private boolean caixaAlta;

@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.rastroinfosistemas.algafood.di.modelo.Cliente;
+import com.rastroinfosistemas.algafood.di.nodificador.NivelDeUrgencia.NivelUrgencia;
 import com.rastroinfosistemas.algafood.di.nodificador.Notificador;
 import com.rastroinfosistemas.algafood.di.nodificador.NotificadorEmail;
+import com.rastroinfosistemas.algafood.di.nodificador.TipoDoNotificador;
 
 /*TODO @Component informa que é uma classe Bean e que deve ser gerenciada pelo Spring
  * Ficar um Notificador é bem mais facil do que ter NotificarEmail ou
@@ -24,7 +26,7 @@ import com.rastroinfosistemas.algafood.di.nodificador.NotificadorEmail;
 @Component
 public class AtivacaoClienteService {
 
-	@Qualifier("urgente")
+	@TipoDoNotificador(NivelUrgencia.NORMAL)
 	@Autowired
 	private Notificador notificador;
 
