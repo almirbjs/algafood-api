@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.rastroinfosistemas.algafood.di.modelo.Cliente;
-import com.rastroinfosistemas.algafood.di.nodificador.NivelDeUrgencia.NivelUrgencia;
+import com.rastroinfosistemas.algafood.di.nodificador.NivelUrgencia;
 import com.rastroinfosistemas.algafood.di.nodificador.Notificador;
 import com.rastroinfosistemas.algafood.di.nodificador.NotificadorEmail;
 import com.rastroinfosistemas.algafood.di.nodificador.TipoDoNotificador;
@@ -22,18 +22,16 @@ import com.rastroinfosistemas.algafood.di.nodificador.TipoDoNotificador;
  * @Primary é utilizado para desambiguação de bean
  */
 
-
 @Component
 public class AtivacaoClienteService {
 
 	@TipoDoNotificador(NivelUrgencia.NORMAL)
-	@Autowired
+	@Qualifier
 	private Notificador notificador;
 
 	public void ativar(Cliente cliente) {
 		cliente.isAtivo();
 
-		notificador.notificar(cliente, "Cadastro Ativado!");
-
+		notificador.notificar(cliente, "Seu cadastro no sistema está ativo!");
 	}
 }
