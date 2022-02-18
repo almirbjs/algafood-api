@@ -7,25 +7,18 @@ import com.rastroinfosistemas.algafood.di.modelo.Cliente;
 public class NotificadorEmail implements Notificador {
 
 	private boolean caixaAlta;
-	private String hostServidorSmtp="Smtp";
-
-	public NotificadorEmail(String hostServidorSmtp) {
-		System.out.println("Notificador Email");
-	}
-
-	
 
 	@Override
 	public void notificar(Cliente cliente, String mensagem) {
-		if (this.caixaAlta) {
-			mensagem = mensagem.toUpperCase();
-		}
-		System.out.printf("notificado %s atraves do email %s: %s %s \n", cliente.getNome(), cliente.getEmail(),
-				this.hostServidorSmtp, mensagem);
+
+		System.out.printf("notificado %s atraves do email %s: %s \n", cliente.getNome(), cliente.getEmail(),
+				mensagem);
 	}
 
-	
-	
+	public NotificadorEmail() {
+
+	}
+
 	public boolean isCaixaAlta() {
 		return caixaAlta;
 	}
