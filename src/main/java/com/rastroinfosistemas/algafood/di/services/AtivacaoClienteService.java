@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.rastroinfosistemas.algafood.di.modelo.Cliente;
@@ -16,21 +17,21 @@ import com.rastroinfosistemas.algafood.di.nodificador.NotificadorEmail;
  * Uma das maneiras de fazer injeção de depencias é pelo construtor
  * @Autowired usamos quando á mais de um construtor e para indentificar qual é o cosntrutor principal
  * @Autowired(required = false) caso tenha uma dependencia obrigatoria.
-
+ * @Primary é utilizado para desambiguação de bean
  */
+
+
 @Component
 public class AtivacaoClienteService {
 
-	@Autowired(required = false)
-	private List<Notificador> notificadores;
+	@Qualifier("urgente")
+	@Autowired
+	private Notificador notificador;
 
 	public void ativar(Cliente cliente) {
 		cliente.isAtivo();
-		
-		for (Notificador notificador : notificadores) {
-			notificador.notificar(cliente, "Cadastro Ativado!");
-			
-		}
-	}
 
+		notificador.notificar(cliente, "Cadastro Ativado!");
+
+	}
 }
