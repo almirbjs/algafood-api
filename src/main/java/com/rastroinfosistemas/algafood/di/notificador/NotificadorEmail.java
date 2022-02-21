@@ -1,4 +1,4 @@
-package com.rastroinfosistemas.algafood.di.nodificador;
+package com.rastroinfosistemas.algafood.di.notificador;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -9,7 +9,7 @@ import com.rastroinfosistemas.algafood.di.modelo.Cliente;
 /*TODO @Component informa que é uma classe Bean e que deve ser gerenciada pelo Spring*/
 
 @Profile("prod")
-@TipoDoNotificador(NivelUrgencia.NORMAL)
+@TipoDoNotificador(NivelUrgencia.URGENTE)
 @Component
 public class NotificadorEmail implements Notificador {
 	

@@ -9,7 +9,7 @@ public class Cliente {
 	
 	//Criado um construtor
 	public Cliente(String nome, String email, String telefone, boolean ativo) {
-		super();
+		
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
